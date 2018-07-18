@@ -2,16 +2,23 @@
 <html>
   <head>
     <title>Docs3</title>
-    <%= csrf_meta_tags %>
+    <!<%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+      <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+      <%= csrf_meta_tags %>
+    <!<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+	<div class = "container" style = "padding-top:20px;">
     <%= yield %>
+        </div>
+
+
   </body>
 </html>
