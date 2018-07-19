@@ -1,0 +1,9 @@
+<% form_for answer do |f| %>
+  <p>
+    <b>2+2=</b><br />
+    <%= f.text_field :answer %>
+  </p>
+  <p>
+    <%= f.submit button_label %>
+  </p>
+<% end %>
