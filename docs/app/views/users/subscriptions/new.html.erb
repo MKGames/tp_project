@@ -1,0 +1,26 @@
+<h1>Standart</h1>
+<% if current_user.try(:standart_subscriber?) %>
+   <div class = "alert alert-error">
+      
+      <p> You are already a Standart subscriber </p>
+
+      </ul>
+      
+   </div>
+
+<% else %>
+<div class = "well">
+
+
+   <%= form_for @document, html: { multipart: true } do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+   <% end %>
+
+
+</div>
+<% end %>
+<p>Find me in app/views/documents/new.html.erb</p>

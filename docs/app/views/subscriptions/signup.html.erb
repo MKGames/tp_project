@@ -1,0 +1,17 @@
+<h1>Subscriptions#signup</h1>
+<% if current_user.try(:standart_subscriber?) %>
+	<strong>You are already a standart subscriber!</strong> 
+<% else %>
+	<%= form_for @user, :url => url_for(:controller => 'SubscriptionsController', :action => 'signup') do |f| %>
+	<div class="field">
+	<%= f.label :answer %>
+	<%= f.text_field :answer %>
+	</div>
+	div class="actions">
+    	<%= f.submit "Sign up" %>
+  	</div>
+	<% end %>
+<% end %>
+
+<p>Find me in app/views/subscriptions/signup.html.erb</p>
+<p>, :url => url_for(:controller => 'SubscriptionsController', :action => 'signup')</p>

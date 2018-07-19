@@ -41,7 +41,9 @@
 	<%= link_to "Download Document", document.attachment_url %>
 	<% else %>
 		<% if user_signed_in? %>
-		<p>Get a standart subscribtion</p>
+		You need to 
+		<%= link_to "Get a subscribtion",subscriptions_signup_path, :class => 'link'  %>
+		 to download this file
 		<% else %>
 		<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 		<% end %>

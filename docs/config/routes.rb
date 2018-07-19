@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'subscriptions/signup'
+  get 'subscriptions/expire'
+  get 'subscriptions/remove'
   get 'documents/index'
   get 'documents/new'
   get 'documents/create'

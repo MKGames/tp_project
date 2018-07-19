@@ -59,9 +59,9 @@ config.action_mailer.delivery_method = :smtp
 #config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
 config.action_mailer.default_url_options = { :host => 'localhost' }
 config.action_mailer.smtp_settings = {
-    user_name:      ENV['SENDMAIL_USERNAME'],
-    password:       ENV['SENDMAIL_PASSWORD'],
-    domain:         ENV['MAIL_HOST'],
+    user_name:      'elsys.tp.2018@gmail.com',
+    password:       'Elsys2018',
+    domain:         'gmail.com',
     address:       'smtp.gmail.com',
     port:          '587',
     authentication: :plain,
