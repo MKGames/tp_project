@@ -8,3 +8,54 @@
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
 
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<br />
+<% if current_user.try(:admin?) %>
+<%= link_to "New Document", new_document_path, class: "btn btn-primary" %>
+<% end %>
+<br />
+<br />
+
+<table class = "table table-bordered table-striped">
+   <thead>.
+      <tr>
+         <th>Name</th>
+         <th>Download Link</th>
+         <th> </th>
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @documents.each do |document| %>
+         
+         <tr>
+            <td><%= document.name %></td>
+            <td>
+	<% if current_user.try(:standart_subscriber?) %>
+	<%= link_to "Download Document", document.attachment_url %>
+	<% else %>
+		<% if user_signed_in? %>
+		You need to 
+		<%= link_to "Get a subscribtion",subscriptions_signup_path, :class => 'link'  %>
+		 to download this file
+		<% else %>
+		<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+		<% end %>
+	<% end %>
+	</td>
+	<% if current_user.try(:admin?) %>
+            <td><%= button_to "Delete",  document, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{document.name}?" %></td>
+	<% end %>
+         </tr>
+         
+      <% end %>
+   </tbody>
+   
+</table>
+
+

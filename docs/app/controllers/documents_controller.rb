@@ -9,13 +9,18 @@ class DocumentsController < ApplicationController
 
   def create
       @document = Document.new(document_params)
-      
+      @document.image.attach(params[:document][:image])
       if @document.save
          redirect_to documents_path, notice: "The document #{@document.name} has been uploaded."
       else
          render "new"
       end
       
+  end
+
+  def show
+      @document = Document.find(params[:id])
+      render "show"
   end
 
   def destroy
@@ -26,7 +31,7 @@ class DocumentsController < ApplicationController
    
    private
       def document_params
-      params.require(:document).permit(:name, :attachment)
+      params.require(:document).permit(:description, :image, :name, :attachment, :subtype)
    end
    
 end

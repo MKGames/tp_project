@@ -1,7 +1,12 @@
 <h1>Subscriptions#signup</h1>
+<%= current_user.try(:standart_subscriber?) %>
+<% if current_user.try(:standart_subscriber?) %>
+<p> You have already subscribed at <%= current_user.subscription_date %> </p>
+<% else %>
 <%= form_tag subscriptions_signup_path do %>
   <label for="answer">2+2=</label>
   <%= text_field_tag :answer %>
  <%= submit_tag "Submit" %>
+<% end %>
 <% end %>
 <p>Find me in app/views/subscriptions/signup.html.erb</p>

@@ -1,0 +1,16 @@
+<h1><%= @document.name %></h1>
+<%= image_tag @document.image %>
+<h3><%= @document.description %></h3>
+<% if @document.subtype==0 %>
+	<%= link_to "Download Document", @document.attachment_url %>
+	<% elsif current_user.try(:standart_subscriber?) && @document.subtype==1 %>
+	<%= link_to "Download Document", @document.attachment_url %>
+	<% else %>
+		<% if user_signed_in? %>
+		You need to 
+		<%= link_to "Get a subscribtion",subscriptions_signup_path, :class => 'link'  %>
+		 to download this file
+		<% else %>
+		<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+		<% end %>
+	<% end %>
