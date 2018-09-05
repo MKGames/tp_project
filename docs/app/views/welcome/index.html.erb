@@ -39,24 +39,12 @@
 	<% if document.subtype==0 %>
 	<%= link_to "Download Document", document.attachment_url %>
 	<% elsif current_user.try(:standart_subscriber?) && document.subtype<=1%>
-		<% if (Time.now.to_f - current_user.subscription_date.to_f).to_i>60 %>
-		<% current_user.standart_subscriber = 0 %>
-		<%= link_to "Get a subscribtion",subscriptions_signup_path, :class => 'link'  %>
-		<% else %>
 		<%= link_to "Download Document", document.attachment_url %>
 		<% end %>
 	<% elsif current_user.try(:tear2_subscriber?) && document.subtype<= 2 %>
-		<% if (Time.now.to_f - current_user.subscription_date.to_f).to_i>120 %>
-		<% current_user.tear2_subscriber = 0 %>
-		<%= link_to "Get a subscribtion",subscriptions_signup_path, :class => 'link'  %>
-		<% else %>
 		<%= link_to "Download Document", document.attachment_url %>
 		<% end %>
 	<% elsif current_user.try(:tear3_subscriber?) && document.subtype<= 3 %>
-		<% if (Time.now.to_f - current_user.subscription_date.to_f).to_i>180 %>
-		<% current_user.tear3_subscriber = 0 %>
-		<%= link_to "Get a subscribtion",subscriptions_signup_path, :class => 'link'  %>
-		<% else %>
 		<%= link_to "Download Document", document.attachment_url %>
 		<% end %>
 	<% else %>
