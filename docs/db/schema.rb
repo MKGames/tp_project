@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_04_202850) do
+ActiveRecord::Schema.define(version: 2018_09_05_011024) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -86,6 +86,10 @@ ActiveRecord::Schema.define(version: 2018_09_04_202850) do
     t.boolean "admin", default: false
     t.boolean "standart_subscriber", default: false
     t.datetime "subscription_date"
+    t.boolean "tear2_subscriber"
+    t.boolean "tear3_subscriber"
+    t.datetime "tear2_time"
+    t.datetime "tear3_time"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

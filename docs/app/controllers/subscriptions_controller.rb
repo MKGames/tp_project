@@ -4,26 +4,29 @@ class SubscriptionsController < ApplicationController
 
   def signup
 	@user = current_user
-	
-	if @user.standart_subscriber == false
-		#handle_asynchronously :deliver
-    		#render 'signup'
-    		#render partial: 'signup', locals: { answer: @answer}
-		answer = params[:answer]
-		if answer == '4'
+	answer = params[:answer]
+		if answer == '2'
 		@user.standart_subscriber = true
 		@user.subscription_date = Time.now
 		@user.save
 		session[:passed_variable] = @user
-		#handle_asynchronously :expire, :run_at => Proc.new { 24.hours.from_now }
 		redirect_to documents_path, notice: "The user #{@user.email} is subscribed now."
-		#else
-    		#render(html: "<script>alert('Wrong answer!')</script>".html_safe,
-        	#layout: 'application')
+		elsif answer == '4'
+		@user.tear2_subscriber = true
+		@user.tear2_time = Time.now
+		@user.save
+		session[:passed_variable] = @user
+		redirect_to documents_path, notice: "The user #{@user.email} is subscribed now."
+		elsif answer == '6'
+		@user.tear3_subscriber = true
+		@user.tear3_time = Time.now
+		@user.save
+		session[:passed_variable] = @user
+		redirect_to documents_path, notice: "The user #{@user.email} is subscribed now."
 		end
-	else
-		redirect_to documents_path, notice: "User already has a standart subscription! #{@user.subscription_date}"
-	end
+	#if @user.standart_subscriber = true && @user.tear2_subscriber = true && @user.tear3_subscriber = true
+	#	redirect_to documents_path, notice: "User already has all subscribtions! #{@user.subscription_date}"
+	#end
   end
 
   def expire

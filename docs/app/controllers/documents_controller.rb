@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   def index
-	@documents = Document.all
+	@documents = Document.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new

@@ -1,12 +1,12 @@
 <h1>Subscriptions#signup</h1>
-<%= current_user.try(:standart_subscriber?) %>
-<% if current_user.try(:standart_subscriber?) %>
-<p> You have already subscribed at <%= current_user.subscription_date %> </p>
-<% else %>
+<p> План 1 се закупува с отговор на въпроса колко е 1+1, план 2 се 
+закупува с отговор на въпроса колко е 2+2 и план 3 се закупува с 
+отговор на въпроса колко е 3+3 </p>
+
 <%= form_tag subscriptions_signup_path do %>
-  <label for="answer">2+2=</label>
+  <label for="answer"> </label>
   <%= text_field_tag :answer %>
  <%= submit_tag "Submit" %>
 <% end %>
-<% end %>
+
 <p>Find me in app/views/subscriptions/signup.html.erb</p>
